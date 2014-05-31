@@ -1,1 +1,7 @@
+node_modules/
+.sass-cache/
 _site
+
+# Compiled files
+app.js
+style.css
