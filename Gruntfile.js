@@ -13,40 +13,34 @@
 
             pkg: grunt.file.readJSON('package.json'),
 
-            siteDir: '_site',
+            devDir: '_dev',
 
             compass: {
-                compile: {
+                options: {
+                    noLineComments: false,
+                    outputStyle: 'expanded',
+                    relativeAssets: true,
+                    sassDir: '_sass'
+                },
+                dev: {
                     options: {
-                        config: 'config.rb'
+                        cssDir: '<%= devDir %>/css'
                     }
-                }
-            },
-
-            concat: {
-                js: {
-                    src: [
-                        'bower_components/jquery/dist/jquery.min.js',
-                        'bower_components/jquery-throttle-debounce/jquery.ba-throttle-debounce.js',
-                        'bower_components/sticky/jquery.sticky.js',
-                        '_js/*.js'
-                    ],
-                    dest: 'app.js'
                 }
             },
 
             connect: {
                 server: {
                     options: {
-                        port: 4000,
-                        base: '<%= siteDir %>'
+                        base: '<%= devDir %>',
+                        port: 4000
                     }
                 }
             },
 
             jekyll: {
-                build: {
-                    dest: '<%= siteDir %>'
+                dev: {
+                    dest: '<%= devDir %>'
                 }
             },
 
